@@ -31,3 +31,11 @@ let dte = new Date();
 let now = dte.getTime();
 convertMsToTime(now);
 })
+
+//Generate Random Key
+let myLetters = ["a", "r", "s", "e", "n", "2", "4"];
+for(i = 0; i < 5; i++){
+let rNum = Math.floor(Math.random() * (myLetters.length - 1));
+console.log(myLetters[rNum]);
+}
+
