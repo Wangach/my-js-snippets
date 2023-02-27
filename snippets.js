@@ -39,3 +39,29 @@ let rNum = Math.floor(Math.random() * (myLetters.length - 1));
 console.log(myLetters[rNum]);
 }
 
+//Mongoose connection to MongoDB
+const mongoose = require("mongoose");
+  
+const connectDB = (URL) => {
+    return mongoose.connect(URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+};
+  
+module.exports = connectDB;
+//Check Before starting Up the server
+const start = async () => {
+    try {
+        await connectDB("mongodb://localhost:27017/DEMO_DB");
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}.`);
+        });
+    } catch (error) {
+        console.log(error);
+        console.log("Failed to connect to the database, 
+            server is not running.");
+    }
+};
+  
+start();
